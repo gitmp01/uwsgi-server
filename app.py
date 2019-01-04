@@ -18,14 +18,20 @@ def _getdata(env):
     return {i: qs[i][0] for i in qs.keys()}
 
 def application(env, start_response):
-    start_response('200 OK', [('Content-Type','text/html')])
 
+
+    # start_response('200 OK', [('Content-Type','text/html')])
     #
     # Content goes here
     #
 
     print 'POST %s' % _postdata(env)
     print 'GET %s' % _getdata(env)
+
+    start_response('200 OK', [('Content-Type','text/html')])
+
+    start_response('400 Bad request', [('Content-Type','text/html')])
+
 
 
     return [b"Hello World"]
